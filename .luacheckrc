@@ -26,6 +26,8 @@ stds.itemplate = {
 		"itemplate",
 	},
 	read_globals = {
+		"default",
+		"futil",
 		"node_entity_queue",
 	},
 }

@@ -4,14 +4,7 @@ local should_return_item = itemplate.settings.return_item
 
 minetest.register_node("itemplate:itemplate", {
 	description = "Plate",
-	tiles = {
-		"[combine:16x16^[noalpha^[colorize:#FFFFF0",
-		"[combine:16x16^[noalpha^[colorize:#FFFFF0",
-		"[combine:16x16^[noalpha^[colorize:#888880",
-		"[combine:16x16^[noalpha^[colorize:#EEEEE0",
-		"[combine:16x16^[noalpha^[colorize:#CCCCC0",
-		"[combine:16x16^[noalpha^[colorize:#AAAAA0",
-	},
+	tiles = itemplate.resources.textures.itemplate,
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
