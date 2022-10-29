@@ -27,4 +27,6 @@ itemplate = {
 	end,
 }
 
+itemplate.dofile("settings")
+itemplate.dofile("entity_management")
 itemplate.dofile("itemplate")
