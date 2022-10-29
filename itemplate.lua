@@ -18,9 +18,10 @@ minetest.register_node("itemplate:itemplate", {
 			{-0.5, -0.4375, -0.4375, -0.3125, -0.375, 0.4375},
 		}
 	},
+	groups = {dig_immediate = 2},
 	sunlight_propagates = true,
 	walkable = true,
-	groups = {dig_immediate = 2},
+	sound = itemplate.resources.sounds.glass,
 	on_rightclick = function(pos, node, clicker, itemstack)
 		if not (pos and node and clicker and itemstack) then
 			return

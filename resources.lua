@@ -14,11 +14,11 @@ itemplate.resources = {
 }
 
 if itemplate.has.default then
-	futil.table.set_all(itemplate.craftitems, {
-		plate_material = "default:clay",
+	futil.table.set_all(itemplate.resources.craftitems, {
+		plate_material = "default:clay_lump",
 	})
 
-	futil.table.set_all(itemplate.resources, {
+	futil.table.set_all(itemplate.resources.sounds, {
 		glass = default.node_sound_glass_defaults()
 	})
 end

@@ -1,4 +1,4 @@
-local ci = itemplate.craftitem
+local ci = itemplate.resources.craftitems
 
 if ci.plate_material then
 	minetest.register_craft({

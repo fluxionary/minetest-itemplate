@@ -15,6 +15,7 @@ itemplate = {
 	S = S,
 
 	has = {
+		default = minetest.get_modpath("default"),
 		node_entity_queue = minetest.get_modpath("node_entity_queue"),
 	},
 
