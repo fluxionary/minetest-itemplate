@@ -1,13 +1,12 @@
 local add_item = minetest.add_item
 
+local S = itemplate.S
 local should_return_item = itemplate.settings.return_item
 
 minetest.register_node("itemplate:itemplate", {
-	description = "Plate",
+	description = S("item plate"),
 	tiles = itemplate.resources.textures.itemplate,
 	drawtype = "nodebox",
-	paramtype = "light",
-	paramtype2 = "facedir",
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -18,10 +17,14 @@ minetest.register_node("itemplate:itemplate", {
 			{-0.5, -0.4375, -0.4375, -0.3125, -0.375, 0.4375},
 		}
 	},
-	groups = {dig_immediate = 2},
+	paramtype = "light",
+	paramtype2 = "facedir",
 	sunlight_propagates = true,
 	walkable = true,
+
+	groups = {dig_immediate = 2},
 	sound = itemplate.resources.sounds.glass,
+
 	on_rightclick = function(pos, node, clicker, itemstack)
 		if not (pos and node and clicker and itemstack) then
 			return
@@ -69,6 +72,7 @@ minetest.register_node("itemplate:itemplate", {
 	on_destruct = function(pos)
 		local meta = minetest.get_meta(pos)
 		local current_item = meta:get("item")
+
 		if current_item then
 			add_item(pos, current_item)
 			meta:set_string("item", "")
@@ -86,16 +90,18 @@ minetest.register_node("itemplate:itemplate", {
 			return
 		end
 
+		local to_drop = {"itemplate:itemplate"}
 		local meta = minetest.get_meta(pos)
 		local current_item = meta:get("item")
 
 		if current_item then
-			add_item(pos, current_item)
+			table.insert(to_drop, current_item)
+			meta:set_string("item", "")
 		end
 
-		add_item(pos, "itemplate:itemplate")
-
 		minetest.remove_node(pos)
+
+		return to_drop
 	end,
 })
 

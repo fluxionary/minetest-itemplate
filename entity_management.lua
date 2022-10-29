@@ -77,6 +77,9 @@ function itemplate.clear_entity(pos)
 			obj:remove()
 		end
 	end
+
+	local meta = minetest.get_meta(pos)
+	meta:set_string("infotext", "")
 end
 
 function itemplate.add_entity(pos)
@@ -86,6 +89,8 @@ function itemplate.add_entity(pos)
 	if not item then
 		return
 	end
+
+	meta:set_string("infotext", futil.get_safe_short_description(item))
 
 	local node = minetest.get_node(pos)
 
@@ -131,6 +136,7 @@ function itemplate.update_entity(pos)
 		if e.item ~= item_name then
 			e.item = item_name
 			obj:set_properties({textures = {item_name}})
+			meta:set_string("infotext", futil.get_safe_short_description(item))
 		end
 
 	elseif not item:is_empty() then
