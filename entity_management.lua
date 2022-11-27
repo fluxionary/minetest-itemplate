@@ -60,7 +60,6 @@ function itemplate.get_entity(pos)
 
 			if item == "" or ent_item ~= item or to_return then
 				obj:remove()
-
 			else
 				to_return = obj
 			end
@@ -98,13 +97,14 @@ function itemplate.add_entity(pos)
 	local p2 = node.param2
 	local posad = facedir[p2]
 
-	if not posad then return end
+	if not posad then
+		return
+	end
 
 	if type(posad) == "table" then
 		pos.x = pos.x + posad.x * 6.5 / 16
 		pos.y = pos.y + posad.y * 6.5 / 16
 		pos.z = pos.z + posad.z * 6.5 / 16
-
 	else
 		pitch = 4.7
 		pos.y = pos.y + posad
@@ -118,7 +118,7 @@ function itemplate.add_entity(pos)
 	e:set_rotation({
 		x = pitch, -- pitch
 		y = yaw, -- yaw
-		z = 0 -- roll
+		z = 0, -- roll
 	})
 end
 
@@ -130,15 +130,13 @@ function itemplate.update_entity(pos)
 
 	if item:is_empty() and obj then
 		itemplate.clear_entity(pos)
-
 	elseif obj then
 		local e = obj:get_luaentity()
 		if e.item ~= item_name then
 			e.item = item_name
-			obj:set_properties({textures = {item_name}})
+			obj:set_properties({ textures = { item_name } })
 			meta:set_string("infotext", futil.get_safe_short_description(item))
 		end
-
 	elseif not item:is_empty() then
 		itemplate.add_entity(pos)
 	end

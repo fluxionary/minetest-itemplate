@@ -10,19 +10,19 @@ minetest.register_node("itemplate:itemplate", {
 	node_box = {
 		type = "fixed",
 		fixed = {
-			{-0.3125, -0.5, -0.3125, 0.3125, -0.4375, 0.3125},
-			{-0.4375, -0.4375, -0.5, 0.4375, -0.375, -0.3125},
-			{-0.4375, -0.4375, 0.3125, 0.4375, -0.375, 0.5},
-			{0.3125, -0.4375, -0.4375, 0.5, -0.375, 0.4375},
-			{-0.5, -0.4375, -0.4375, -0.3125, -0.375, 0.4375},
-		}
+			{ -0.3125, -0.5, -0.3125, 0.3125, -0.4375, 0.3125 },
+			{ -0.4375, -0.4375, -0.5, 0.4375, -0.375, -0.3125 },
+			{ -0.4375, -0.4375, 0.3125, 0.4375, -0.375, 0.5 },
+			{ 0.3125, -0.4375, -0.4375, 0.5, -0.375, 0.4375 },
+			{ -0.5, -0.4375, -0.4375, -0.3125, -0.375, 0.4375 },
+		},
 	},
 	paramtype = "light",
 	paramtype2 = "facedir",
 	sunlight_propagates = true,
 	walkable = true,
 
-	groups = {dig_immediate = 2},
+	groups = { dig_immediate = 2 },
 	sound = itemplate.resources.sounds.glass,
 
 	on_rightclick = function(pos, node, clicker, itemstack)
@@ -45,7 +45,6 @@ minetest.register_node("itemplate:itemplate", {
 		if current_item then
 			if should_return_item then
 				itemplate.return_item(pos, clicker, current_item)
-
 			else
 				add_item(pos, current_item)
 			end
@@ -90,7 +89,7 @@ minetest.register_node("itemplate:itemplate", {
 			return
 		end
 
-		local to_drop = {"itemplate:itemplate"}
+		local to_drop = { "itemplate:itemplate" }
 		local meta = minetest.get_meta(pos)
 		local current_item = meta:get("item")
 
@@ -108,11 +107,10 @@ minetest.register_node("itemplate:itemplate", {
 -- automatically restore entities lost due to /clearobjects or similar
 if itemplate.has.node_entity_queue then
 	node_entity_queue.api.register_node_entity_loader("itemplate:itemplate", itemplate.update_entity)
-
 else
 	minetest.register_lbm({
 		name = "itemplate:itemplate_item_restoration",
-		nodenames = {"itemplate:itemplate"},
+		nodenames = { "itemplate:itemplate" },
 		run_at_every_load = true,
 		action = function(pos, node, active_object_count, active_object_count_wider)
 			itemplate.update_entity(pos)

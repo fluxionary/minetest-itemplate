@@ -7,7 +7,7 @@ local S = minetest.get_translator(modname)
 itemplate = {
 	author = "flux",
 	license = "AGPL_v3",
-	version = os.time({year = 2022, month = 10, day = 28}),
+	version = os.time({ year = 2022, month = 10, day = 28 }),
 	fork = "flux",
 
 	modname = modname,
@@ -24,7 +24,7 @@ itemplate = {
 	end,
 
 	dofile = function(...)
-		return dofile(table.concat({modpath, ...}, DIR_DELIM) .. ".lua")
+		return dofile(table.concat({ modpath, ... }, DIR_DELIM) .. ".lua")
 	end,
 }
 
