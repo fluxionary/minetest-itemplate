@@ -30,7 +30,7 @@ minetest.register_node("itemplate:itemplate", {
 			return
 		end
 
-		if not minetest.is_player(clicker) then
+		if not futil.is_player(clicker) then
 			return
 		end
 
